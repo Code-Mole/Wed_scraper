@@ -7,15 +7,14 @@ const scrapeWebsite = async (url, selectors) => {
   try {
     // Launch a browser instance
     const browser = await puppeteer.launch({
-      headless: true, // Set to 'false' to see the browser window
-      args: ["--no-sandbox", "--disable-setuid-sandbox"], // Required for Docker and some environments
+      headless: true, 
+      args: ["--no-sandbox", "--disable-setuid-sandbox"], 
     });
     const page = await browser.newPage();
 
     // Navigate to the target URL
     await page.goto(url);
 
-    // Wait for the content to load (adjust selectors if needed)
     await page.waitForSelector(selectors.leadItem);
 
     // Extract data from the page

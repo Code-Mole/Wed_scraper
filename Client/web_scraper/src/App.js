@@ -3,17 +3,18 @@ import axios from "axios";
 import "./App.css";
 
 function App() {
+  // useStates 
   const [url, setUrl] = useState("");
   const [selectors, setSelectors] = useState({});
   const [scrapedData, setScrapedData] = useState([]);
   const [fetchData, setFetchData] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
-  const [isLoading, setIsLoading] = useState(false); // Track loading state
-
+  const [isLoading, setIsLoading] = useState(false); 
+// function for form submittion
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrorMessage(null);
-    setIsLoading(true); // Set loading state to true
+    setIsLoading(true); 
 
     try {
       const response = await axios.post("http://localhost:8500/scrape", {
@@ -28,7 +29,7 @@ function App() {
         "Failed to scrape data. Please check your URL and selectors."
       );
     } finally {
-      setIsLoading(false); // Set loading state to false after scraping
+      setIsLoading(false); 
     }
   };
 
